@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="bower_components/vue/dist/vue.js"></script>
+    <script>
+       window.onload = function () {
+          var Aaa = Vue.extend({
+              template:"<h3>{{name}}</h3>"
+          });
+
+//          var aaa= new Aaa();
+//           console.log(aaa);
+        Vue.component('aaa',Aaa)
+         var vm = new Vue({
+              el:"#box",
+              data:{
+//                bSign:true
+                  name:'我是newVue里面的'
+              },
+              methods:{
+
+              },
+             components:{
+                  aaa:Aaa
+             }
+
+          })
+      }
+    </script>
+</head>
+<body>
+ <div id="box">
+   <aaa></aaa>
+ </div>
+</body>
+</html>
