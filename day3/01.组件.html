@@ -7,7 +7,18 @@
     <script>
        window.onload = function () {
           var Aaa = Vue.extend({
-              template:"<h3>{{name}}</h3>"
+              data(){
+                  return {
+                      name:"我是newVue里面的"
+                  }
+              },
+              template:"<h3 @click='change'>{{name}}</h3>",
+              methods:{
+                  change:function () {
+                    this.name = 'change'
+                  }
+              },
+
           });
 
 //          var aaa= new Aaa();
@@ -19,9 +30,7 @@
 //                bSign:true
                   name:'我是newVue里面的'
               },
-              methods:{
 
-              },
              components:{
                   aaa:Aaa
              }

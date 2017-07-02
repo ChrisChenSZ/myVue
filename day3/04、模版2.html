@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="bower_components/vue/dist/vue.js"></script>
+    <script>
+       window.onload = function () {
+          new Vue({
+              el:"#box",
+              data:{
+
+              },
+              methods:{
+
+              },
+              components:{
+                  myComponents: {
+                      data(){
+                          return {
+                              name:"我的第二个组件",
+                              arr:['apple','orange','bananer']
+                          }
+                      },
+                      methods:{
+                          show:function () {
+                              this.name = "改变了"
+                          }
+                      },
+                      template:"#my"
+                  }
+
+              }
+
+          })
+      }
+    </script>
+</head>
+<body>
+<div id="box">
+    <my-components></my-components>
+</div>
+     <template id="my">
+         <ul><li v-for="item in arr">{{item}}</li></ul>
+     </template>
+</body>
+</html>

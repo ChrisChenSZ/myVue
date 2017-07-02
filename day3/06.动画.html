@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="bower_components/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="bower_components/animate.css/animate.css">
+    <style>
+        #box2{
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+        #box3{
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            new Vue({
+                el:"#box",
+                data:{
+                    isshow:true
+                },
+                methods:{
+                    show(){
+                        this.isshow = !this.isshow;
+                    }
+
+                },
+                transitions:{ //定义所有动画名称
+                    bounce:{
+                        enterClass:'rollIn',
+                        leaveClass:'zoomOutRight'
+                    }
+                }
+
+
+            })
+        }
+    </script>
+</head>
+<body>
+<div id="box">
+    <button @click="show">按钮</button>
+    <div id="box2" class="animated" v-show="isshow" transition="bounce"></div>
+</div>
+<div id="box3" class="animated  fadeOut"></div>
+</body>
+</html>

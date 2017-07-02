@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="bower_components/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="bower_components/animate.css">
+    <style>
+        #box2{
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+        .fade-transition{
+            transition: 1s all ease;
+        }
+        .fade-enter{
+            opacity: 0;
+        }
+        .fade-leave{
+            opacity: 0;
+            transform: translateX(200px);
+        }
+    </style>
+    <script>
+       window.onload = function () {
+          new Vue({
+              el:"#box",
+              data:{
+                isshow:true
+              },
+              methods:{
+                show(){
+                    this.isshow = !this.isshow;
+                }
+
+              }
+
+          })
+      }
+    </script>
+</head>
+<body>
+<div id="box">
+    <button @click="show">按钮</button>
+    <div id="box2" v-show="isshow" transition="fade"></div>
+</div>
+</body>
+</html>
