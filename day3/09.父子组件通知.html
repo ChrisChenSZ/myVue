@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="bower_components/vue/dist/vue.js"></script>
+    <script>
+        window.onload = function () {
+            new Vue({
+                el:"#box",
+                data:{
+
+                },
+                methods:{
+
+                },
+                components:{
+                    aaa:{
+                        data(){
+                            return {
+                                name:"qfd",
+                                father:"我是父类2"
+                            }
+                        },
+                        methods:{
+                            showsondata(sondata){
+                                alert(sondata);
+                                this.name = sondata;
+                            }
+                        },
+                        template:"#aaa",
+                        components:{
+                            bbb:{
+                                data(){
+                                    return {
+                                        name2:"我是子类"
+                                    }
+                                },
+//                                props:['m']
+                                props:{m:String}
+                                ,
+                                template:"#bbb",
+                                methods:{
+                                    send(){
+//                                        alert(1);
+                                        this.$emit("sondata",this.name2);
+                                    }
+
+                                }
+
+                            }
+                        }
+                    }
+                }
+
+            })
+        }
+    </script>
+</head>
+<body>
+<div id="box">
+    <aaa></aaa>
+</div>
+
+<template id="aaa">
+    <h2>{{name}}</h2><p >{{name}}</p>
+    <bbb :m='name' @sondata="showsondata"></bbb>
+</template>
+
+<template id="bbb">
+    <h3>{{m}}</h3><h2></h2>
+    <input type="submit" value="点击"  @click="send">
+</template>
+</body>
+</html>

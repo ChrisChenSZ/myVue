@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="bower_components/vue/dist/vue.js"></script>
+    <script>
+       window.onload = function () {
+          new Vue({
+              el:"#box",
+              data:{
+
+              },
+              methods:{
+
+              },
+              components:{
+                  aaa:{
+                      data(){
+                          return {
+                              name:"我是父类"
+                          }
+                      },
+                      template:"<h2>{{name}}</h2><bbb></bbb>",
+                      components:{
+                          bbb:{
+                              data(){
+                                 return {
+                                     name2:"我是子类"
+                                 }
+                              },
+                              template:"<h3>{{name2}}</h3>"
+
+                          }
+                      }
+                  }
+              }
+
+          })
+      }
+    </script>
+</head>
+<body>
+<div id="box">
+    <aaa></aaa>
+</div>
+</body>
+</html>

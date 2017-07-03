@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="bower_components/vue/dist/vue.js"></script>
+    <script>
+       window.onload = function () {
+          new Vue({
+              el:"#box",
+              data:{
+
+              },
+              methods:{
+
+              },
+              components:{
+                  firstel:{
+                      data(){
+                          return {
+                              name:"我是更换后的"
+                          }
+                      },
+                      template:"#firstel"
+                  }
+              }
+
+          })
+      }
+    </script>
+</head>
+<body>
+<div id="box">
+    <firstel>
+        <ul slot="ul">
+            <li>1</li>
+            <li>2</li>
+        </ul>
+        <ol slot="ol">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ol>
+    </firstel>
+    <hr>
+    <firstel>
+      <h1>我是H原来的</h1>
+    </firstel>
+</div>
+<template id="firstel">
+
+    <slot name="ul"></slot>
+    <h1>{{name}}</h1>
+    <slot name="ol"></slot>
+</template>
+</body>
+</html>
